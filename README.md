@@ -49,4 +49,4 @@ python manage.py runserver
 ```
 
 ## Autore
-Andrea Monari
+Andrea Monari - [GitHub](https://github.com/jadebo990) - [LinkedIn](https://www.linkedin.com/in/andrea-m-732176337)
