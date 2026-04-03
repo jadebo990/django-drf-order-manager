@@ -1,0 +1,109 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block head_title %}Gestione Ordini{% endblock head_title %}
+
+{% block content %}
+    {% include 'includes/header.html' %}
+
+    <h1 class="text-center my-5 text-white bricolage-grotesque-h1">Gestione degli ordini</h1>
+    
+    <div id="divOperazione" class="card mx-auto mb-5 d-none" style="max-width: 50rem;">
+        <div class="card-header">
+            <h3 id="titoloOperazione" class="m-2 text-center bricolage-grotesque-h3"></h3>
+        </div>
+        
+        <div class="card-body">
+            <form id="formOrdine" method="post">
+                {% csrf_token %}
+    
+                <div class="mb-3">
+                    <label class="fw-bold">Cliente:</label>
+                    <select id="selectCliente" class="form-select" required>
+                        <option value="">Caricamento...</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="fw-bold">Aggiungi prodotto:</label>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <select id="selectProdotto" class="form-select">
+                                <option value="">Caricamento...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" id="inputQuantita" class="form-control" placeholder="Quantità" min="1" value="1">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success w-100" id="btnAggiungiProdotto">+ Aggiungi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divListaProdotti" class="mb-3 d-none">
+                    <label class="fw-bold">Prodotti nell'ordine:</label>
+                    <ul id="listaProdotti" class="list-group">
+                        
+                    </ul>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="fw-bold">Data:</label>
+                    <input type="date" id="inputData" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Stato:</label>
+                    <select id="inputStato" class="form-select">
+                        <option value="">Seleziona stato</option>
+                        <option value="in_attesa">In Attesa</option>
+                        <option value="spedito">Spedito</option>
+                        <option value="consegnato">Consegnato</option>
+                        <option value="cancellato">Cancellato</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="btnSubmit">Salva</button>
+                <button type="button" class="btn btn-secondary" id="btnAnnulla">Annulla</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="divListaOrdini" class="card mx-auto rounded-5" style="max-width: 75rem;" >
+        <div class="card-header position-relative">
+            <h3 class="m-2 text-center bricolage-grotesque-h3">Lista Ordini</h3>
+            <button id="btnNuovoOrdine" type="button" class="btn def-1 position-absolute top-0 end-0">Nuovo ordine</button>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover text-center m-0 bg-white">
+                    <thead>
+                        <tr>
+                            <th>ID Ordine</th>
+                            <th>Email Cliente</th>
+                            <th>Dettagli Ordine</th>
+                            <th>Data</th>
+                            <th>Stato</th>
+                            <th colspan="2">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabellaOrdini">
+                        <tr>
+                            <td colspan="7" class="text-center">Caricamento...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'core/js/ordini.js' %}"></script>
+{% endblock extra_js %}

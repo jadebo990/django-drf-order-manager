@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+        <title>{% block head_title %}{% endblock head_title %}</title>
+        {% load bootstrap5 %}
+            <script src="{% static 'js/base.js' %}" defer></script>
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block extra_css %}{% endblock extra_css %}
+    </head>
+    <body class="bg-color">
+        {% block content %}{% endblock content %}
+        {% block extra_js %}{% endblock extra_js %}
+    </body>
+</html>
