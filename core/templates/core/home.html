@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block head_title %}Homepage{% endblock head_title %}
+{% block extra_css %}
+	 <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+{% endblock extra_css %}
+
+{% block content %}
+    {% include 'includes/header.html' %}
+	<div class="container-fluid">
+		<h1 class="text-center mt-5 text-decoration-underline bricolage-grotesque-h1 text-white">Gestione Ordini di Magazzino</h1>
+		<h2 class="text-center bricolage-grotesque-h2 text-white">Interfaccia per la visualizzazione e la gestione degli ordini del magazzino</h2>
+		<div class="text-center mt-5">
+			<a href="{% url 'ordini' %}" class="btn btn-info px-4 text-white font-button">ENTRA</a>
+		</div>
+	</div>
+{% endblock content %}
